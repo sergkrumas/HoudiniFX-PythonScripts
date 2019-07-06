@@ -71,9 +71,11 @@ if path_to_source_geometry and prim_groups_count > 0:
         obj_geo.move(hou.Vector2( (c % 3) * 3 , - (c // 3) ))
         
         #obj_geo.moveToGoodPosition()
-        
-        #delete auto-created node
-        obj_geo.node("file1").destroy()
+
+        #delete auto-created nodes
+        for child in obj_geo.children():
+            child.destroy()
+
 
 
         #create node that we want to create inside
